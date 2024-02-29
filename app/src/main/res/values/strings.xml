@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="heading">Heading</string>
+    <string name="content">Content</string>
+    <string name="_12_2_2024">12/2/2024</string>
+    <string name="add_new_note">Add New Note</string>
+    <string name="title">Title</string>
+    <string name="notes">Notes</string>
+    <string name="submit">Submit</string>
+</resources>
