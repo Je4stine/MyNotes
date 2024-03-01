@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var data: ArrayList<ItemData>;
+    private lateinit var data: ArrayList<NotesDt>;
     private lateinit var notesAdapter: NotesAdapter;
+    private lateinit var db:NotesHelper;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         data = ArrayList()
         notesAdapter = NotesAdapter(data)
+        db = NotesHelper(this )
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.rcItems)
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = notesAdapter
 
-        Notes()
+
 
         val fabAdd : FloatingActionButton = findViewById(R.id.fabAdd)
 
@@ -37,10 +39,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun Notes ()
-    {
-        data.add(ItemData("New Note", "12/3/2024", "This is the first Note"))
-        data.add(ItemData("Java", "12/3/2024", "Migrate from Java to Kotlin"))
-        notesAdapter.notifyDataSetChanged()
+    override fun onResume() {
+        super.onResume()
+        notesAdapter.refreshData(db.getAllNotes())
     }
+
 }

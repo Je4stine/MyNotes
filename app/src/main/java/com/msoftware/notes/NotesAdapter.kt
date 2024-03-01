@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class NotesAdapter ( private val data : ArrayList<ItemData>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter ( private var data : List<NotesDt>) : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewLayout = LayoutInflater.from(parent.context).inflate(
@@ -20,7 +20,7 @@ class NotesAdapter ( private val data : ArrayList<ItemData>) : RecyclerView.Adap
 
         val currentItem = data[position]
         holder.heading.text = currentItem.heading
-        holder.body.text = currentItem.content
+        holder.body.text = currentItem.body
         holder.date.text = currentItem.date
     }
 
@@ -32,6 +32,12 @@ class NotesAdapter ( private val data : ArrayList<ItemData>) : RecyclerView.Adap
         val heading: TextView = itemView.findViewById(R.id.tvHeading);
         val body: TextView = itemView.findViewById(R.id.tvContent);
         val date: TextView = itemView.findViewById(R.id.tvDate);
+    }
+
+    fun refreshData (newNotesDt: List<NotesDt>)
+    {
+        data = newNotesDt
+        notifyDataSetChanged()
     }
 }
 
