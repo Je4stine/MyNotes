@@ -65,4 +65,6 @@ class NotesHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, n
 
 
     }
+
+
 }

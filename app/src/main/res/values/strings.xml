@@ -9,4 +9,7 @@
     <string name="submit">Submit</string>
     <string name="note_title">Note Title</string>
     <string name="notes2">Notes...</string>
+    <string name="textview">TextView</string>
+    <string name="headi">TextView</string>
+    <string name="edit">Edit</string>
 </resources>

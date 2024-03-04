@@ -1,5 +1,6 @@
 package com.msoftware.notes
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,17 @@ class NotesAdapter ( private var data : List<NotesDt>) : RecyclerView.Adapter<No
         holder.heading.text = currentItem.heading
         holder.body.text = currentItem.body
         holder.date.text = currentItem.date
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, Update::class.java).apply {
+                putExtra("heading", currentItem.heading)
+                putExtra("body", currentItem.body)
+                putExtra("date", currentItem.date)
+
+            }
+
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -32,6 +44,7 @@ class NotesAdapter ( private var data : List<NotesDt>) : RecyclerView.Adapter<No
         val heading: TextView = itemView.findViewById(R.id.tvHeading);
         val body: TextView = itemView.findViewById(R.id.tvContent);
         val date: TextView = itemView.findViewById(R.id.tvDate);
+
     }
 
     fun refreshData (newNotesDt: List<NotesDt>)

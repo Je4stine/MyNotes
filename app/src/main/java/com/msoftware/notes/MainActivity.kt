@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         data = ArrayList()
         notesAdapter = NotesAdapter(data)
-        db = NotesHelper(this )
+        db = NotesHelper(this)
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.rcItems)
